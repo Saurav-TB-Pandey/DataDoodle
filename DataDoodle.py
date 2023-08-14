@@ -1,6 +1,6 @@
 # Project name :- DataDoodle
 # Developer name :- Saurav Pandey
-# Version : 1.5v
+# Version : 1.6v
 
 import pyautogui as auto
 import openpyxl
@@ -68,7 +68,6 @@ def DetailedData():
             for line in MemberData:
                 try:
                     Required_Data = line[line.find("reportOutput"):]
-
                     for i in range (Required_Data.count("jobId")):
                         if '}' in Required_Data:
                             Brace_End = Required_Data.find('}')+1
@@ -209,6 +208,13 @@ def Error_Reason(One_Brace):
                                 Real_Error_Reason = Real_Error_Reason + error_Reason
                             else :
                                 Real_Error_Reason = Real_Error_Reason + error_Reason + "\n"
+                        else :
+                            error_Reason = One_Brace[0:].strip(""" 1234567890,.;:}[]{\|!@#$%^&*(+=)""")
+                            errorReason.append(error_Reason)
+                            if i == Reward_Number_Count - 1 :
+                                Real_Error_Reason = Real_Error_Reason + error_Reason
+                            else :
+                                Real_Error_Reason = Real_Error_Reason + error_Reason + "\n"
                     return Real_Error_Reason
         except:
             return "Null"
@@ -223,5 +229,5 @@ def Error_Reason(One_Brace):
     else:
         return "Null"
 
-auto.alert("\tWelcome\t\t","DataDoodle")
+auto.alert("\tWelcome\t\t","Pandey-Ji Creation..")
 Taking_TextFile_Path()
